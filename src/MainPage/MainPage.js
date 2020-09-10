@@ -9,7 +9,7 @@ class MainPage extends Component {
     return (
       <div className="mainPage">
         <Header />
-        <SidebarMainPage />
+        <SidebarMainPage folders={this.props.folders} />
         <MainSectionMainPage notes={this.props.notes} />
       </div>
     );

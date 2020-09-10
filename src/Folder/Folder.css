@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,600&display=swap");
 
-.note {
+.folder {
   border: 1px solid yellow;
   border-radius: 5px;
   padding: 10px;
@@ -14,24 +14,12 @@
   text-align: left;
 }
 
-.noteTitle {
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.folderTitle {
   text-align: left;
   margin-top: 0px;
-}
-
-.deleteNoteButton {
-  background-color: transparent;
-  color: white;
-  float: right;
-  border: solid yellow 1px;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-#nameLink a:visited {
-  color: rgb(179, 237, 255);
-}
-
-#nameLink a:hover {
-  color: rgb(255, 255, 145);
 }

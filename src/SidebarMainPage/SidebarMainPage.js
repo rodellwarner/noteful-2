@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./SidebarMainPage.css";
+import ListOfFolders from "../ListOfFolders/ListOfFolders";
 
 class SidebarMainPage extends Component {
   render() {
     return (
       <div className="sidebarMainPage">
-        <p>test text</p>
+        <ListOfFolders folders={this.props.folders} />
       </div>
     );
   }

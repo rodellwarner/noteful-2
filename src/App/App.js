@@ -20,7 +20,11 @@ class App extends Component {
               exact
               path="/"
               render={(props) => (
-                <MainPage {...props} notes={this.state.notes} />
+                <MainPage
+                  {...props}
+                  notes={this.state.notes}
+                  folders={this.state.folders}
+                />
               )}
             />
             <Route component={NotFoundPage} />

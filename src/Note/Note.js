@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Note.css";
 
 class Note extends Component {
@@ -14,10 +15,15 @@ class Note extends Component {
       16
     );
 
+    const noteId = this.props.note.id;
+    const notePath = `/note/${noteId}`;
+
     return (
-      <div className="note">
+      <div className="note" id="nameLink">
         <p className="noteTitle">
-          <b>Note {this.props.index + 1}</b>
+          <Link to={notePath}>
+            <b>Note {this.props.index + 1}</b>
+          </Link>
         </p>
         Name: <b>{this.props.note.name}</b>
         <br></br> Date modified: <b>{properDateWithTextStringSliced}</b>
