@@ -7,7 +7,11 @@ class ListOfNotes extends Component {
     const arrayOfNotes = STORE.notes;
 
     const listOfNotes = arrayOfNotes.map((note, index) => {
-      return <p key={index}>{note.name}</p>;
+      return (
+        <p key={index}>
+          {note.name} {note.modified}
+        </p>
+      );
     });
 
     return <div className="listOfNotes">{listOfNotes}</div>;
