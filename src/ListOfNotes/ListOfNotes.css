@@ -1,7 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,600&display=swap");
-
 .listOfNotes {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  font-size: 14pt;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.addNoteButton {
+  background-color: transparent;
+  color: white;
+  border: solid yellow 1px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 16pt;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
