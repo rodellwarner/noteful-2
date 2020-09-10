@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import "./ListOfNotes.css";
-import STORE from "../dummy-store";
 
 class ListOfNotes extends Component {
   render() {
-    const arrayOfNotes = STORE.notes;
+    const arrayOfNotes = this.props.notes;
 
     const listOfNotes = arrayOfNotes.map((note, index) => {
       return (

@@ -10,7 +10,7 @@ class MainPage extends Component {
       <div className="mainPage">
         <Header />
         <SidebarMainPage />
-        <MainSectionMainPage />
+        <MainSectionMainPage notes={this.props.notes} />
       </div>
     );
   }

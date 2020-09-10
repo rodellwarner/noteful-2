@@ -3,11 +3,12 @@ import { Route, Switch } from "react-router-dom";
 import MainPage from "../MainPage/MainPage";
 import "./App.css";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import STORE from "../dummy-store";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { test: "" };
+    this.state = { notes: STORE.notes, folders: STORE.folders };
   }
 
   render() {
@@ -15,7 +16,13 @@ class App extends Component {
       <div className="app">
         <main>
           <Switch>
-            <Route exact path="/" component={MainPage} />
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <MainPage {...props} notes={this.state.notes} />
+              )}
+            />
             <Route component={NotFoundPage} />
           </Switch>
         </main>

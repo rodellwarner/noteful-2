@@ -6,7 +6,7 @@ class MainSectionMainPage extends Component {
   render() {
     return (
       <div className="mainSectionMainPage">
-        <ListOfNotes />
+        <ListOfNotes notes={this.props.notes} />
       </div>
     );
   }
