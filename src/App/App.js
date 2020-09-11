@@ -27,6 +27,16 @@ class App extends Component {
                 />
               )}
             />
+            <Route
+              path="/folder/:folderId"
+              render={(props) => (
+                <MainPage
+                  {...props}
+                  notes={this.state.notes}
+                  folders={this.state.folders}
+                />
+              )}
+            />
             <Route component={NotFoundPage} />
           </Switch>
         </main>
