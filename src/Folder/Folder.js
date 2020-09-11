@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Folder.css";
 
-class Note extends Component {
+class Folder extends Component {
   render() {
     const folderId = this.props.folder.id;
     const folderPath = `/folder/${folderId}`;
@@ -17,4 +17,4 @@ class Note extends Component {
   }
 }
 
-export default Note;
+export default Folder;

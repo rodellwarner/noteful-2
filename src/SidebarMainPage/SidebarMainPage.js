@@ -6,7 +6,10 @@ class SidebarMainPage extends Component {
   render() {
     return (
       <div className="sidebarMainPage">
-        <ListOfFolders folders={this.props.folders} />
+        <ListOfFolders
+          folders={this.props.folders}
+          folderId={this.props.folderId}
+        />
       </div>
     );
   }

@@ -32,7 +32,9 @@ class App extends Component {
               render={(props) => (
                 <MainPage
                   {...props}
-                  notes={this.state.notes}
+                  notes={this.state.notes.filter(
+                    (note) => note.folderId === props.match.params.folderId
+                  )}
                   folders={this.state.folders}
                 />
               )}
