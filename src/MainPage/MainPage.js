@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import "./MainPage.css";
 import Header from "../Header/Header";
-import SidebarMainPage from "../SidebarMainPage/SidebarMainPage";
-import MainSectionMainPage from "../MainSectionMainPage/MainSectionMainPage";
+import Sidebar from "../Sidebar/Sidebar";
+import MainSection from "../MainSection/MainSection";
 
 class MainPage extends Component {
   render() {
     return (
       <div className="mainPage">
         <Header />
-        <SidebarMainPage
+        <Sidebar
           folders={this.props.folders}
           folderId={this.props.match.params.folderId}
         />
-        <MainSectionMainPage notes={this.props.notes} />
+        <MainSection notes={this.props.notes} />
       </div>
     );
   }
