@@ -16,8 +16,6 @@ class NotesPageSidebar extends Component {
       (folder) => folder.id === folderIdOfSelectedNote
     );
 
-    // const folderToDisplayAsObject = folderToDisplay[0];
-
     return (
       <div className="notesPageSidebar">
         <Folders folders={folderToDisplay} />

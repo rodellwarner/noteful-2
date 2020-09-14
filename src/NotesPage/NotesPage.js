@@ -9,11 +9,6 @@ class NotesPage extends Component {
     return (
       <div className="notesPage">
         <Header />
-        {/* <Sidebar
-          folders={this.props.folders}
-          folderId={this.props.match.params.folderId}
-        />
-        <MainSection notes={this.props.notes} folders={this.props.folders} /> */}
         <NotesPageMainSection notes={this.props.notes} />
         <NotesPageSidebar
           folders={this.props.folders}
