@@ -13,7 +13,7 @@ class MainPage extends Component {
           folders={this.props.folders}
           folderId={this.props.match.params.folderId}
         />
-        <MainSection notes={this.props.notes} />
+        <MainSection notes={this.props.notes} folders={this.props.folders} />
       </div>
     );
   }

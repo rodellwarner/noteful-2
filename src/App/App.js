@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import MainPage from "../MainPage/MainPage";
+import NotesPage from "../NotesPage/NotesPage";
 import "./App.css";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import STORE from "../dummy-store";
@@ -36,6 +37,19 @@ class App extends Component {
                     (note) => note.folderId === props.match.params.folderId
                   )}
                   folders={this.state.folders}
+                />
+              )}
+            />
+            <Route
+              path="/note/:noteId"
+              render={(props) => (
+                <NotesPage
+                  {...props}
+                  notes={this.state.notes.filter(
+                    (note) => note.id === props.match.params.noteId
+                  )}
+                  folders={this.state.folders}
+                  allNotes={this.state.notes}
                 />
               )}
             />
