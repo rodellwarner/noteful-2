@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./NotesPageSidebar.css";
-import Folders from "../Folders/Folders";
+import Folder from "../Folder/Folder";
 
 class NotesPageSidebar extends Component {
   render() {
@@ -18,7 +18,14 @@ class NotesPageSidebar extends Component {
 
     return (
       <div className="notesPageSidebar">
-        <Folders folders={folderToDisplay} />
+        {console.log("Folder To Display: ", folderToDisplay)}
+        <div className="folders">
+          <Folder
+            folder={folderToDisplay[0]}
+            folderId={folderIdOfSelectedNote}
+          />
+          <button className="addFolderButton">Add Folder</button>
+        </div>
       </div>
     );
   }
