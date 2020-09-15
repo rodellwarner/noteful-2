@@ -23,6 +23,7 @@ class NotesPageSidebar extends Component {
           <Folder
             folder={folderToDisplay[0]}
             folderId={folderIdOfSelectedNote}
+            class={"folder"}
           />
           <button className="addFolderButton">Add Folder</button>
         </div>
