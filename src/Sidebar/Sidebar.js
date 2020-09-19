@@ -3,24 +3,10 @@ import "./Sidebar.css";
 import Folder from "../Folder/Folder";
 
 class Sidebar extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { selectedFolder: [] };
-  // }
-
   render() {
     const folders = this.props.folders;
 
-    // const folderIdOfTheFolderIWantToHighlight = this.props.folderId;
-
-    // const folderToHighlight = folders.filter((folder) => {
-    //   if (folder.id === folderIdOfTheFolderIWantToHighlight) {
-    //     return folder;
-    //   } else return null;
-    // });
-
     const highlight = this.props.folderId;
-    console.log("Highlight: ", highlight);
 
     const ListOfFolders = folders.map((folder, index) => {
       if (folder.id === highlight) {

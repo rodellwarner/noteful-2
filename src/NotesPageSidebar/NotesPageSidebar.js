@@ -18,12 +18,11 @@ class NotesPageSidebar extends Component {
 
     return (
       <div className="notesPageSidebar">
-        {console.log("Folder To Display: ", folderToDisplay)}
         <div className="folders">
           <Folder
             folder={folderToDisplay[0]}
             folderId={folderIdOfSelectedNote}
-            class={"folder"}
+            className={"folder"}
           />
           <button className="addFolderButton">Add Folder</button>
         </div>
