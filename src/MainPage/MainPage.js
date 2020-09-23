@@ -6,14 +6,12 @@ import MainSection from "../MainSection/MainSection";
 
 class MainPage extends Component {
   render() {
+    const folderId = this.props.match.params.folderId;
     return (
       <div className="mainPage">
         <Header />
-        <Sidebar
-          folders={this.props.folders}
-          folderId={this.props.match.params.folderId}
-        />
-        <MainSection notes={this.props.notes} folders={this.props.folders} />
+        <Sidebar folderId={folderId} />
+        <MainSection folderId={folderId} />
       </div>
     );
   }

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
 import Folder from "../Folder/Folder";
+import NotesAndFoldersContext from "../NotesAndFoldersContext";
 
 class Sidebar extends Component {
+  static contextType = NotesAndFoldersContext;
   render() {
-    const folders = this.props.folders;
+    const folders = this.context.folders;
 
     const highlight = this.props.folderId;
 
@@ -15,7 +17,7 @@ class Sidebar extends Component {
             folderId={folder.id}
             folder={folder}
             key={index}
-            class={"highlightedFolder"}
+            className={"highlightedFolder"}
           />
         );
       } else
@@ -24,7 +26,7 @@ class Sidebar extends Component {
             folderId={folder.id}
             folder={folder}
             key={index}
-            class={"folder"}
+            className={"folder"}
           />
         );
     });

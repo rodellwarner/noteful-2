@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import "./NotesPageSidebar.css";
 import Folder from "../Folder/Folder";
+import NotesAndFoldersContext from "../NotesAndFoldersContext";
 
 class NotesPageSidebar extends Component {
+  static contextType = NotesAndFoldersContext;
   render() {
-    const noteId = this.props.notes[0].id;
+    // const noteId = this.props.notes[0].id;
+    const noteId = this.props.noteId;
 
-    const noteRelatedToFolderToDisplay = this.props.allNotes.filter(
+    const noteRelatedToFolderToDisplay = this.context.notes.filter(
       (note) => note.id === noteId
     );
 
     const folderIdOfSelectedNote = noteRelatedToFolderToDisplay[0].folderId;
 
-    const folderToDisplay = this.props.folders.filter(
+    const folderToDisplay = this.context.folders.filter(
       (folder) => folder.id === folderIdOfSelectedNote
     );
 

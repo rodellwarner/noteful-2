@@ -4,58 +4,56 @@ import MainPage from "../MainPage/MainPage";
 import NotesPage from "../NotesPage/NotesPage";
 import "./App.css";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import STORE from "../dummy-store";
+import NotesAndFoldersContext from "../NotesAndFoldersContext";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { notes: STORE.notes, folders: STORE.folders };
+  state = { notes: [], folders: [], error: null };
+
+  deleteNote = () => {};
+
+  updateNotes = (newNotes) => {
+    this.setState({ notes: newNotes });
+  };
+
+  updateFolders = (newFolders) => {
+    this.setState({ folders: newFolders });
+  };
+
+  componentDidMount() {
+    fetch("http://localhost:9090/folders").then((results) => {
+      results.json().then((foldersJSON) => {
+        this.setState({ folders: foldersJSON });
+      });
+    });
+
+    fetch("http://localhost:9090/notes").then((results) => {
+      results.json().then((notesJSON) => {
+        this.setState({ notes: notesJSON });
+      });
+    });
   }
 
   render() {
+    const contextValue = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+      deleteNote: this.deleteNote,
+      updateFolders: this.updateFolders,
+      updateNotes: this.updateNotes,
+    };
     return (
       <div className="app">
-        <main>
+        <NotesAndFoldersContext.Provider value={contextValue}>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <MainPage
-                  {...props}
-                  notes={this.state.notes}
-                  folders={this.state.folders}
-                />
-              )}
-            />
-            <Route
-              path="/folder/:folderId"
-              render={(props) => (
-                <MainPage
-                  {...props}
-                  notes={this.state.notes.filter(
-                    (note) => note.folderId === props.match.params.folderId
-                  )}
-                  folders={this.state.folders}
-                />
-              )}
-            />
-            <Route
-              path="/note/:noteId"
-              render={(props) => (
-                <NotesPage
-                  {...props}
-                  notes={this.state.notes.filter(
-                    (note) => note.id === props.match.params.noteId
-                  )}
-                  folders={this.state.folders}
-                  allNotes={this.state.notes}
-                />
-              )}
-            />
+            <Route exact path="/" component={MainPage} />
+
+            <Route path="/folder/:folderId" component={MainPage} />
+
+            <Route path="/note/:noteId" component={NotesPage} />
+
             <Route component={NotFoundPage} />
           </Switch>
-        </main>
+        </NotesAndFoldersContext.Provider>
       </div>
     );
   }

@@ -20,12 +20,13 @@ class Notes extends Component {
 
       const noteId = note.id;
       const notePath = `/note/${noteId}`;
+      const noteNumber = index + 1;
 
       return (
         <div key={index} className="note" id="nameLink">
           <p className="noteTitle">
             <Link to={notePath}>
-              <b>Note {index + 1}</b>
+              <b>Note {noteNumber}</b>
             </Link>
           </p>
           Name: <b>{note.name}</b>
