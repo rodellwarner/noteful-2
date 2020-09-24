@@ -1,8 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Notes.css";
+import NotesAndFoldersContext from "../NotesAndFoldersContext";
+
+function deleteNoteRequest(noteId, callback) {
+  console.log("URL: ", `http://localhost:9090/notes/${noteId}`);
+  fetch(`http://localhost:9090/notes/${noteId}`, {
+    method: "DELETE",
+  })
+    .then((results) => {
+      if (!results.ok) {
+        return results.json().then((error) => {
+          throw error;
+        });
+      }
+      return results.json();
+    })
+    .then((data) => {
+      callback(noteId);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  if (window.location.href.indexOf("note") > -1) {
+    window.location.replace("http://localhost:3000/");
+  }
+}
 
 class Notes extends Component {
+  static contextType = NotesAndFoldersContext;
+
   render() {
     const arrayOfNotes = this.props.notes;
 
@@ -31,7 +58,12 @@ class Notes extends Component {
           </p>
           Name: <b>{note.name}</b>
           <br></br> Date modified: <b>{properDateWithTextStringSliced}</b>
-          <button className="deleteNoteButton">Delete Note</button>
+          <button
+            className="deleteNoteButton"
+            onClick={() => deleteNoteRequest(note.id, this.context.deleteNote)}
+          >
+            Delete Note
+          </button>
         </div>
       );
     });

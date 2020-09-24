@@ -9,14 +9,11 @@ import NotesAndFoldersContext from "../NotesAndFoldersContext";
 class App extends Component {
   state = { notes: [], folders: [], error: null };
 
-  deleteNote = () => {};
-
-  updateNotes = (newNotes) => {
+  deleteNote = (idOfNoteToBeDeleted) => {
+    const newNotes = this.state.notes.filter((note) => {
+      return note.id !== idOfNoteToBeDeleted;
+    });
     this.setState({ notes: newNotes });
-  };
-
-  updateFolders = (newFolders) => {
-    this.setState({ folders: newFolders });
   };
 
   componentDidMount() {
@@ -34,12 +31,12 @@ class App extends Component {
   }
 
   render() {
+    console.log("Notes In State: ", this.state.notes);
+
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote: this.deleteNote,
-      updateFolders: this.updateFolders,
-      updateNotes: this.updateNotes,
     };
     return (
       <div className="app">
