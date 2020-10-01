@@ -14,9 +14,14 @@
   background-color: rgb(255, 247, 99);
 }
 
-#addNoteSubmitButton {
+.addNoteSubmitButton {
   margin-top: 10px;
   background-color: transparent;
   border-radius: 5px;
   font-size: 14pt;
+}
+
+.requiredField {
+  font-size: 10pt;
+  color: rgb(255, 59, 59);
 }

@@ -2,34 +2,62 @@ import React, { Component } from "react";
 import "./AddNote.css";
 import Header from "../Header/Header";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import ValidationError from "../ValidationError/ValidationError";
 
 class AddNote extends Component {
   static contextType = NotesAndFoldersContext;
 
-  constructor(props) {
-    super();
-    this.state = {
-      newNoteName: "",
-      newSelectedFolder: "",
-      newContent: "",
-      newDate: "",
-    };
+  state = {
+    name: { newNoteName: "", touched: false },
+    folder: { newSelectedFolder: "", touched: false },
+    content: { newContent: "", touched: false },
+    date: { newDate: "", touched: false },
+  };
+
+  updateNoteName(nameOfNote) {
+    this.setState({ name: { newNoteName: nameOfNote, touched: true } });
   }
 
-  updateNoteName(name) {
-    this.setState({ newNoteName: name });
+  updateSelectedFolder(folderChoice) {
+    this.setState({
+      folder: { newSelectedFolder: folderChoice, touched: true },
+    });
   }
 
-  updateSelectedFolder(folder) {
-    this.setState({ newSelectedFolder: folder });
-  }
-
-  updateNoteContent(content) {
-    this.setState({ newContent: content });
+  updateNoteContent(contentEntered) {
+    this.setState({ content: { newContent: contentEntered, touched: true } });
   }
 
   updateNoteDate(date) {
-    this.setState({ newDate: date });
+    this.setState({ date: { newDate: date, touched: true } });
+  }
+
+  validateName() {
+    const name = this.state.name.newNoteName.trim();
+    if (name.length === 0) {
+      return "Name is required.";
+    } else if (name.length < 3) {
+      return "Name must be at least three characters long.";
+    }
+  }
+
+  validateFolderSelection() {
+    const folderSelection = this.state.folder.newSelectedFolder;
+    if (folderSelection.length === 0) {
+      return "Please select a folder from the menu.";
+    }
+  }
+
+  validateContent() {
+    const contentEntry = this.state.content.newContent;
+    if (contentEntry.length < 1)
+      return "Please enter the contents of the note.";
+  }
+
+  requiredFieldNotifier(field) {
+    if (field.touched === false) {
+      return <div className="requiredField">*required field</div>;
+    }
   }
 
   submitAddNoteForm(event) {
@@ -41,10 +69,10 @@ class AddNote extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: this.state.newNoteName,
-        content: this.state.newContent,
-        folderId: this.state.newSelectedFolder,
-        modified: this.state.newDate,
+        name: this.state.name.newNoteName,
+        content: this.state.content.newContent,
+        folderId: this.state.folder.newSelectedFolder,
+        modified: this.state.date.newDate,
       }),
     });
     window.location.replace("http://localhost:3000/");
@@ -57,8 +85,6 @@ class AddNote extends Component {
         </option>
       );
     });
-
-    console.log("Selected Folder", this.state.newSelectedFolder);
 
     return (
       <div className="addNotePage">
@@ -76,19 +102,28 @@ class AddNote extends Component {
             name="selectFolder"
             id="selectFolder"
             onChange={(e) => this.updateSelectedFolder(e.target.value)}
-            required
           >
+            <option value="">select a folder</option>
             {folderOptions}
           </select>
+          {this.requiredFieldNotifier(this.state.folder)}
+          {this.state.folder.touched && (
+            <ValidationError message={this.validateFolderSelection()} />
+          )}
           <br></br>
           <br></br>
           <label htmlFor="newNoteName">Give This Note A Name: </label>
+
           <input
             type="text"
             name="newNoteName"
             onChange={(e) => this.updateNoteName(e.target.value)}
-            required
           ></input>
+          {this.requiredFieldNotifier(this.state.name)}
+          {this.state.name.touched && (
+            <ValidationError message={this.validateName()} />
+          )}
+
           <br></br>
           <br></br>
           <label htmlFor="noteContent">Add Content: </label>
@@ -96,8 +131,11 @@ class AddNote extends Component {
             name="noteContent"
             id="noteContent"
             onChange={(e) => this.updateNoteContent(e.target.value)}
-            required
           ></textarea>
+          {this.requiredFieldNotifier(this.state.content)}
+          {this.state.content.touched && (
+            <ValidationError message={this.validateContent()} />
+          )}
           <br></br>
           <br></br>
           <label htmlFor="noteDate">Enter Date: </label>
@@ -105,11 +143,21 @@ class AddNote extends Component {
             type="date"
             name="noteDate"
             onChange={(e) => this.updateNoteDate(e.target.value)}
-            required
           ></input>
+          {this.requiredFieldNotifier(this.state.date)}
           <br></br>
           <br></br>
-          <button id="addNoteSubmitButton">Submit</button>
+          <button
+            type="submit"
+            className="addNoteSubmitButton"
+            disabled={
+              this.validateName() ||
+              this.validateFolderSelection() ||
+              this.validateContent()
+            }
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
