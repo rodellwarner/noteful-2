@@ -39,8 +39,6 @@ class App extends Component {
       deleteNote: this.deleteNote,
     };
 
-    console.log("Folders: ", this.state.folders);
-
     return (
       <div className="app">
         <NotesAndFoldersContext.Provider value={contextValue}>

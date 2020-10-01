@@ -22,15 +22,15 @@ class NotesPageSidebar extends Component {
 
     return (
       <div className="notesPageSidebar">
+        <Link to="/add-folder">
+          <button className="addFolderButton">Add Folder</button>
+        </Link>
         <div className="folders">
           <Folder
             folder={folderToDisplay[0]}
             folderId={folderIdOfSelectedNote}
             className={"folder"}
           />
-          <Link to="/add-folder">
-            <button className="addFolderButton">Add Folder</button>
-          </Link>
         </div>
       </div>
     );

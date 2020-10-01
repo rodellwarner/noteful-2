@@ -16,10 +16,10 @@ class NotesPageMainSection extends Component {
 
     return (
       <div className="mainSection">
-        <Notes notes={notes} />
         <Link to="/add-note">
           <button className="addNoteButton">Add Note</button>
         </Link>
+        <Notes notes={notes} />
       </div>
     );
   }

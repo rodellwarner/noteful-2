@@ -9,8 +9,6 @@ class MainSection extends Component {
   render() {
     const folderId = this.props.folderId;
 
-    console.log("Folder ID: ", folderId);
-
     const notesInFolder = this.context.notes.filter((note) => {
       if (!folderId) {
         return note;
@@ -19,10 +17,10 @@ class MainSection extends Component {
 
     return (
       <div className="mainSection">
-        <Notes notes={notesInFolder} />
         <Link to="/add-note">
           <button className="addNoteButton">Add Note</button>
         </Link>
+        <Notes notes={notesInFolder} />
       </div>
     );
   }

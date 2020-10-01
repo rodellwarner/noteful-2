@@ -34,12 +34,10 @@ class Sidebar extends Component {
 
     return (
       <div className="sidebar">
-        <div className="folders">
-          {ListOfFolders}
-          <Link to="/add-folder">
-            <button className="addFolderButton">Add Folder</button>
-          </Link>
-        </div>
+        <Link to="/add-folder">
+          <button className="addFolderButton">Add Folder</button>
+        </Link>
+        <div className="folders">{ListOfFolders}</div>
       </div>
     );
   }
