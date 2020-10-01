@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./NotesPageSidebar.css";
 import Folder from "../Folder/Folder";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
@@ -27,7 +28,9 @@ class NotesPageSidebar extends Component {
             folderId={folderIdOfSelectedNote}
             className={"folder"}
           />
-          <button className="addFolderButton">Add Folder</button>
+          <Link to="/add-folder">
+            <button className="addFolderButton">Add Folder</button>
+          </Link>
         </div>
       </div>
     );

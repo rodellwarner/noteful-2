@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./NotesPageMainSection.css";
 import Notes from "../Notes/Notes";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
@@ -16,6 +17,9 @@ class NotesPageMainSection extends Component {
     return (
       <div className="mainSection">
         <Notes notes={notes} />
+        <Link to="/add-note">
+          <button className="addNoteButton">Add Note</button>
+        </Link>
       </div>
     );
   }

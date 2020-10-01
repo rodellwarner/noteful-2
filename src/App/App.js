@@ -4,6 +4,8 @@ import MainPage from "../MainPage/MainPage";
 import NotesPage from "../NotesPage/NotesPage";
 import "./App.css";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import AddFolder from "../AddFolder/AddFolder";
+import AddNote from "../AddNote/AddNote";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
 
 class App extends Component {
@@ -31,13 +33,14 @@ class App extends Component {
   }
 
   render() {
-    console.log("Notes In State: ", this.state.notes);
-
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote: this.deleteNote,
     };
+
+    console.log("Folders: ", this.state.folders);
+
     return (
       <div className="app">
         <NotesAndFoldersContext.Provider value={contextValue}>
@@ -47,6 +50,10 @@ class App extends Component {
             <Route path="/folder/:folderId" component={MainPage} />
 
             <Route path="/note/:noteId" component={NotesPage} />
+
+            <Route path="/add-folder" component={AddFolder} />
+
+            <Route path="/add-note" component={AddNote} />
 
             <Route component={NotFoundPage} />
           </Switch>

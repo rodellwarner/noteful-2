@@ -68,12 +68,7 @@ class Notes extends Component {
       );
     });
 
-    return (
-      <div className="notes">
-        {listOfNotes}
-        <button className="addNoteButton">Add Note</button>
-      </div>
-    );
+    return <div className="notes">{listOfNotes}</div>;
   }
 }
 

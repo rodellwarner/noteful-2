@@ -5,19 +5,6 @@
   margin-bottom: 30px;
 }
 
-.addNoteButton {
-  background-color: transparent;
-  color: white;
-  border: solid yellow 1px;
-  border-radius: 5px;
-  margin-top: 15px;
-  font-size: 16pt;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 .note {
   border: 1px solid yellow;
   border-radius: 5px;
