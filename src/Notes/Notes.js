@@ -52,7 +52,9 @@ class Notes extends Component {
         <div key={index} className="note" id="nameLink">
           <p className="noteTitle">
             <Link to={notePath}>
-              <b>Note {noteNumber}</b>
+              <b>
+                <u>Note {noteNumber}</u>
+              </b>
             </Link>
           </p>
           Name: <b>{note.name}</b>

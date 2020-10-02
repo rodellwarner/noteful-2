@@ -5,11 +5,11 @@ import "./Folder.css";
 class Folder extends Component {
   render() {
     return (
-      <div className={this.props.className}>
-        <Link to={`/folder/${this.props.folderId}`}>
+      <Link to={`/folder/${this.props.folderId}`}>
+        <div className={this.props.className}>
           Folder name: <b>{this.props.folder.name}</b>
-        </Link>
-      </div>
+        </div>
+      </Link>
     );
   }
 }
