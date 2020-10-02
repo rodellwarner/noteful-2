@@ -134,6 +134,7 @@ class EditNote extends Component {
           <input
             type="date"
             name="noteDate"
+            defaultValue={selectedNote[0].modified}
             onChange={(e) => this.updateDate(e.target.value)}
           ></input>
 
