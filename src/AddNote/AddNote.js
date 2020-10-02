@@ -110,7 +110,7 @@ class AddNote extends Component {
           {this.state.folder.touched && (
             <ValidationError message={this.validateFolderSelection()} />
           )}
-          <br></br>
+
           <br></br>
           <label htmlFor="newNoteName">Give This Note A Name: </label>
 
@@ -125,7 +125,6 @@ class AddNote extends Component {
           )}
 
           <br></br>
-          <br></br>
           <label htmlFor="noteContent">Add Content: </label>
           <textarea
             name="noteContent"
@@ -136,7 +135,7 @@ class AddNote extends Component {
           {this.state.content.touched && (
             <ValidationError message={this.validateContent()} />
           )}
-          <br></br>
+
           <br></br>
           <label htmlFor="noteDate">Enter Date: </label>
           <input
@@ -145,7 +144,6 @@ class AddNote extends Component {
             onChange={(e) => this.updateNoteDate(e.target.value)}
           ></input>
           {this.requiredFieldNotifier(this.state.date)}
-          <br></br>
           <br></br>
           <button
             type="submit"

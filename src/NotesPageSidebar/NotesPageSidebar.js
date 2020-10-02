@@ -14,7 +14,8 @@ class NotesPageSidebar extends Component {
       (note) => note.id === noteId
     );
 
-    const folderIdOfSelectedNote = noteRelatedToFolderToDisplay[0].folderId;
+    const folderIdOfSelectedNote =
+      noteRelatedToFolderToDisplay[0].folderId || [];
 
     const folderToDisplay = this.context.folders.filter(
       (folder) => folder.id === folderIdOfSelectedNote

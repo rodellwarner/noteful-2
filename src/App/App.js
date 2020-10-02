@@ -6,6 +6,7 @@ import "./App.css";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import AddFolder from "../AddFolder/AddFolder";
 import AddNote from "../AddNote/AddNote";
+import EditNote from "../EditNote/EditNote";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
 
 class App extends Component {
@@ -52,6 +53,8 @@ class App extends Component {
             <Route path="/add-folder" component={AddFolder} />
 
             <Route path="/add-note" component={AddNote} />
+
+            <Route path="/edit-note/:noteId" component={EditNote} />
 
             <Route component={NotFoundPage} />
           </Switch>

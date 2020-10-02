@@ -4,7 +4,6 @@ import "./Notes.css";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
 
 function deleteNoteRequest(noteId, callback) {
-  console.log("URL: ", `http://localhost:9090/notes/${noteId}`);
   fetch(`http://localhost:9090/notes/${noteId}`, {
     method: "DELETE",
   })
@@ -64,6 +63,9 @@ class Notes extends Component {
           >
             Delete Note
           </button>
+          <Link to={`/edit-note/${noteId}`}>
+            <button className="editNoteButton">Edit Note</button>
+          </Link>
         </div>
       );
     });
