@@ -1,26 +1,38 @@
 import React, { Component } from "react";
 import Header from "../Header/Header";
+import ValidationError from "../ValidationError/ValidationError";
 import "./AddFolder.css";
 
 class AddFolder extends Component {
-  constructor(props) {
-    super();
-    this.state = { newFolderName: "" };
-  }
+  state = { folderName: { newFolderName: "", touched: false } };
 
   updateFolderName(name) {
-    this.setState({ newFolderName: name });
+    this.setState({ folderName: { newFolderName: name, touched: true } });
+  }
+
+  validateFolderName() {
+    const folderNameEntry = this.state.folderName.newFolderName;
+    if (folderNameEntry.length < 1) {
+      return "Please enter a name for this folder.";
+    } else if (folderNameEntry.length < 3) {
+      return "Folder name must be at least 3 characters long.";
+    }
+  }
+
+  requiredFieldNotifier(field) {
+    if (field.touched === false) {
+      return <div className="requiredField">*required field</div>;
+    }
   }
 
   submitAddFolderForm(event) {
     event.preventDefault();
-    const folderName = { name: this.state.newFolderName };
     fetch("http://localhost:9090/folders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(folderName),
+      body: JSON.stringify({ name: this.state.folderName.newFolderName }),
     });
     window.location.replace("http://localhost:3000/");
   }
@@ -42,8 +54,21 @@ class AddFolder extends Component {
             onChange={(e) => this.updateFolderName(e.target.value)}
             required
           ></input>
+          {this.requiredFieldNotifier(this.state.folderName)}
+          {this.state.folderName.touched && (
+            <ValidationError
+              message={this.validateFolderName(
+                this.state.folderName.newFolderName
+              )}
+            />
+          )}
           <br></br>
-          <button id="addFolderSubmitButton">Submit</button>
+          <button
+            id="addFolderSubmitButton"
+            disabled={this.validateFolderName()}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
