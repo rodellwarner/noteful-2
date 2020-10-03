@@ -8,6 +8,7 @@ import AddFolder from "../AddFolder/AddFolder";
 import AddNote from "../AddNote/AddNote";
 import EditNote from "../EditNote/EditNote";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import ErrorCatcher from "../ErrorCatcher";
 
 class App extends Component {
   state = { notes: [], folders: [], error: null };
@@ -48,13 +49,17 @@ class App extends Component {
 
             <Route path="/folder/:folderId" component={MainPage} />
 
+            {/* <ErrorCatcher> */}
             <Route path="/note/:noteId" component={NotesPage} />
+            {/* </ErrorCatcher> */}
 
             <Route path="/add-folder" component={AddFolder} />
 
             <Route path="/add-note" component={AddNote} />
 
-            <Route path="/edit-note/:noteId" component={EditNote} />
+            <ErrorCatcher>
+              <Route path="/edit-note/:noteId" component={EditNote} />
+            </ErrorCatcher>
 
             <Route component={NotFoundPage} />
           </Switch>

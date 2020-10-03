@@ -3,6 +3,7 @@ import "./NotesPage.css";
 import Header from "../Header/Header";
 import NotesPageSidebar from "../NotesPageSidebar/NotesPageSidebar";
 import NotesPageMainSection from "../NotesPageMainSection/NotesPageMainSection";
+import PropTypes from "prop-types";
 
 class NotesPage extends Component {
   render() {
@@ -17,5 +18,7 @@ class NotesPage extends Component {
     );
   }
 }
+
+NotesPage.propTypes = { match: PropTypes.object };
 
 export default NotesPage;

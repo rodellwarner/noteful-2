@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./NotesPageMainSection.css";
 import Notes from "../Notes/Notes";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import PropTypes from "prop-types";
 
 class NotesPageMainSection extends Component {
   static contextType = NotesAndFoldersContext;
@@ -24,5 +25,7 @@ class NotesPageMainSection extends Component {
     );
   }
 }
+
+NotesPageMainSection.propTypes = { noteId: PropTypes.string };
 
 export default NotesPageMainSection;

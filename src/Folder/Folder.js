@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Folder.css";
+import PropTypes from "prop-types";
 
 class Folder extends Component {
   render() {
@@ -13,5 +14,11 @@ class Folder extends Component {
     );
   }
 }
+
+Folder.propTypes = {
+  folderId: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  folder: PropTypes.object.isRequired,
+};
 
 export default Folder;

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./MainSection.css";
 import Notes from "../Notes/Notes";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import PropTypes from "prop-types";
 
 class MainSection extends Component {
   static contextType = NotesAndFoldersContext;
@@ -25,5 +26,7 @@ class MainSection extends Component {
     );
   }
 }
+
+MainSection.propTypes = { folderId: PropTypes.string };
 
 export default MainSection;

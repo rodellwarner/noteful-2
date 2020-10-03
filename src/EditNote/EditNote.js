@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./EditNote.css";
 import Header from "../Header/Header";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import PropTypes from "prop-types";
 
 class EditNote extends Component {
   state = {
@@ -152,5 +153,11 @@ class EditNote extends Component {
     );
   }
 }
+
+EditNote.propTypes = {
+  match: PropTypes.object.isRequired,
+  params: PropTypes.object,
+  noteId: PropTypes.string,
+};
 
 export default EditNote;

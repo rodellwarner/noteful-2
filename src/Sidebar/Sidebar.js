@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import Folder from "../Folder/Folder";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import PropTypes from "prop-types";
 
 class Sidebar extends Component {
   static contextType = NotesAndFoldersContext;
@@ -42,5 +43,7 @@ class Sidebar extends Component {
     );
   }
 }
+
+Sidebar.propTypes = { folderId: PropTypes.string };
 
 export default Sidebar;

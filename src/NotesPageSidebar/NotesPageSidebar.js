@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./NotesPageSidebar.css";
 import Folder from "../Folder/Folder";
 import NotesAndFoldersContext from "../NotesAndFoldersContext";
+import PropTypes from "prop-types";
 
 class NotesPageSidebar extends Component {
   static contextType = NotesAndFoldersContext;
@@ -14,8 +15,7 @@ class NotesPageSidebar extends Component {
       (note) => note.id === noteId
     );
 
-    const folderIdOfSelectedNote =
-      noteRelatedToFolderToDisplay[0].folderId || [];
+    const folderIdOfSelectedNote = noteRelatedToFolderToDisplay[0].folderId;
 
     const folderToDisplay = this.context.folders.filter(
       (folder) => folder.id === folderIdOfSelectedNote
@@ -37,5 +37,7 @@ class NotesPageSidebar extends Component {
     );
   }
 }
+
+NotesPageSidebar.propTypes = { noteId: PropTypes.string.isRequired };
 
 export default NotesPageSidebar;
